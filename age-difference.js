@@ -1,21 +1,8 @@
 'use strict';
 
 var ancestryArray = require('./ancestry');
-
-module.exports = exports = {};
-
-function average (array) {
-  function plus(a, b) { return a + b; }
-  return array.reduce(plus) / array.length;
-}
-
-function parseJson (array) {
-	var parsed = [];
-	for(var i=0; i < array.length; i++) {
-		parsed.push(JSON.parse(array[i]));
-	}
-	return parsed;
-};
+var parseJson = require('./functions').parseJson;
+var average = require('./functions').average;
 
 var ancestryJson = parseJson(ancestryArray);
 
@@ -59,7 +46,11 @@ function getMotherAgeArray(array) {
 	return motherAgeArray;
 };
 
-console.log(average(getMotherAgeArray(filtered)));
+function logOutput () {
+	console.log(average(getMotherAgeArray(filtered)));
+};
+
+logOutput();
 
 
 
